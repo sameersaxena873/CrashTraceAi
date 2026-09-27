@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CashTrace AI | Predictive Cash-Out Intelligence</title>
+<meta name="description" content="CashTrace AI — a synthetic predictive cash-out intelligence dashboard prototype for cybercrime investigation workflows.">
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+<main class="site-shell">
+<section class="cinema-scroll" id="top">
+  <div class="stage">
+    <div class="world">
+      <div class="bg-grid"></div>
+      <div class="glow glow-a"></div><div class="glow glow-b"></div>
+      <header class="site-header">
+        <a class="site-logo" href="#top">CashTrace <span>AI</span></a>
+        <nav class="site-nav">
+          <a href="#top">Overview</a><a href="#dashboard">Dashboard</a><a href="#workflow">Workflow</a><a href="#alerts">Alerts</a>
+        </nav>
+        <button class="language-switcher" id="demoMode">DEMO</button>
+      </header>
+
+      <div class="hero-copy">
+        <p class="eyebrow">SMART INDIA HACKATHON 2026 · SIH26184</p>
+        <h1>CashTrace<br><em>AI</em></h1>
+        <p class="hero-sub">Predictive cash-out location intelligence for cybercrime cases — turning transaction trails into actionable, time-sensitive intelligence.</p>
+        <div class="hero-actions"><a class="primary" href="#dashboard">Open Intelligence Dashboard <span>↗</span></a><a class="secondary" href="#workflow">See how it works</a></div>
+      </div>
+
+      <div class="orbital">
+        <div class="orbit orbit-1"></div><div class="orbit orbit-2"></div>
+        <div class="radar"><span></span><i></i><b></b></div>
+        <div class="pin pin-1">ATM 07<br><strong>92%</strong></div>
+        <div class="pin pin-2">ATM 14<br><strong>84%</strong></div>
+        <div class="pin pin-3">ATM 21<br><strong>76%</strong></div>
+      </div>
+
+      <div class="hero-stats">
+        <div><strong>2–6h</strong><span>critical response window</span></div>
+        <div><strong>GIS</strong><span>risk heatmap intelligence</span></div>
+        <div><strong>XGBoost</strong><span>explainable ranking model</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content-section" id="dashboard">
+  <div class="section-head"><p class="eyebrow">LIVE DEMO</p><h2>Risk locations, before the cash-out.</h2><p>Explore a synthetic case dashboard showing how complaint, transaction, geographic and behavioral signals can be prioritized.</p></div>
+  <div class="dashboard">
+    <aside class="case-panel">
+      <div class="case-top"><span class="status-dot"></span><span>CASE CT-26184</span><span class="live">SYNTHETIC DATA</span></div>
+      <h3>Complaint intake</h3>
+      <label>Complaint amount</label><div class="metric">₹48,500</div>
+      <label>Transfer chain</label><div class="chain"><span>Victim</span><b>→</b><span>Mule A</span><b>→</b><span>Mule B</span></div>
+      <label>Signals detected</label>
+      <div class="chips"><span>Velocity spike</span><span>Geo proximity</span><span>Night activity</span><span>New beneficiary</span></div>
+      <button class="simulate" id="simulate">Run prediction <span>↗</span></button>
+    </aside>
+    <div class="map-card">
+      <div class="map-toolbar"><span>RISK HEATMAP</span><span>Last update: <b id="time">now</b></span></div>
+      <div class="map">
+        <div class="road r1"></div><div class="road r2"></div><div class="road r3"></div><div class="road r4"></div>
+        <div class="river"></div>
+        <div class="zone z1"><span>92%</span></div><div class="zone z2"><span>84%</span></div><div class="zone z3"><span>76%</span></div>
+        <div class="atm a1">ATM 07</div><div class="atm a2">ATM 14</div><div class="atm a3">ATM 21</div>
+        <div class="map-label city">PRIORITY ZONE</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content-section dark" id="workflow">
+  <div class="workflow-wrap">
+    <div class="section-head"><p class="eyebrow">TECHNICAL APPROACH</p><h2>From complaint to prioritized action.</h2></div>
+    <div class="steps">
+      <article><span>01</span><h3>Ingest</h3><p>NCRP/1930 complaint and transaction-trail inputs enter the case pipeline.</p></article>
+      <article><span>02</span><h3>Engineer</h3><p>Geographic, temporal, transaction and behavioral signals are transformed into features.</p></article>
+      <article><span>03</span><h3>Rank</h3><p>Python ML models score candidate cash-out locations with explainable risk factors.</p></article>
+      <article><span>04</span><h3>Act</h3><p>FastAPI pushes ranked locations to a React + Leaflet investigator dashboard.</p></article>
+    </div>
+    <div class="stack"><span>Python</span><span>Scikit-learn</span><span>XGBoost</span><span>FastAPI</span><span>React.js</span><span>Leaflet.js</span><span>PostgreSQL</span><span>PostGIS</span><span>Pandas</span><span>NumPy</span></div>
+  </div>
+</section>
+
+<section class="content-section" id="alerts">
+  <div class="section-head"><p class="eyebrow">ACTIONABLE INTELLIGENCE</p><h2>Prioritize the next move.</h2></div>
+  <div class="alert-grid">
+    <article class="alert-card high"><div><span class="badge">HIGH RISK</span><span>ATM 07</span></div><strong>92%</strong><p>Cluster near recent mule-account activity. Estimated window: next 2–3 hours.</p><button onclick="ack(this)">Acknowledge alert</button></article>
+    <article class="alert-card"><div><span class="badge">ELEVATED</span><span>ATM 14</span></div><strong>84%</strong><p>Strong temporal and geographic similarity to prior cash-out patterns.</p><button onclick="ack(this)">Acknowledge alert</button></article>
+    <article class="alert-card"><div><span class="badge">WATCH</span><span>ATM 21</span></div><strong>76%</strong><p>Lower confidence cluster requiring additional transaction evidence.</p><button onclick="ack(this)">Acknowledge alert</button></article>
+  </div>
+  <footer><span>CashTrace AI · Prototype</span><span>Tech Titans · Team 140867</span></footer>
+</section>
+
+<section class="panel prediction-panel" id="location-tools">
+  <div class="panel-head">
+    <div>
+      <span class="eyebrow">LIVE DEMO ENGINE</span>
+      <h2>Location &amp; Value Predictor</h2>
+      <p>Enter a complaint value and coordinates to generate a synthetic ranked cash-out location view.</p>
+    </div>
+  </div>
+
+  <div class="predictor-grid">
+    <label>Complaint / transaction value (₹)
+      <input id="amountInput" type="number" min="1" value="48500" step="500">
+    </label>
+    <label>Latitude
+      <input id="latInput" type="number" step="0.000001" value="28.3670">
+    </label>
+    <label>Longitude
+      <input id="lngInput" type="number" step="0.000001" value="79.4304">
+    </label>
+    <button class="primary-btn" id="predictBtn" type="button">Run location prediction</button>
+  </div>
+
+  <div class="map-tools">
+    <div id="locationMap" class="location-map" aria-label="Synthetic ATM risk map">
+      <div class="map-grid"></div>
+      <div class="map-label">SYNTHETIC GIS VIEW</div>
+      <div class="atm-marker m1" data-atm="ATM 07"><b>92%</b><span>ATM 07</span></div>
+      <div class="atm-marker m2" data-atm="ATM 14"><b>84%</b><span>ATM 14</span></div>
+      <div class="atm-marker m3" data-atm="ATM 21"><b>76%</b><span>ATM 21</span></div>
+      <div class="user-pin" id="userPin">●</div>
+    </div>
+    <div class="prediction-output">
+      <div class="output-kpi"><span>Entered value</span><strong id="valueOutput">₹48,500</strong></div>
+      <div class="output-kpi"><span>Risk level</span><strong id="riskOutput">HIGH</strong></div>
+      <div class="output-kpi"><span>Predicted window</span><strong id="windowOutput">Next 2–6 hours</strong></div>
+      <p class="muted" id="predictionNote">Synthetic demo output — not a real ATM prediction.</p>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table class="location-table">
+      <thead><tr><th>Rank</th><th>Cash-out location</th><th>Risk</th><th>Distance</th><th>Est. value</th><th>Action</th></tr></thead>
+      <tbody id="locationRows"></tbody>
+    </table>
+  </div>
+</section>
+
+</main>
+<div class="toast" id="toast">Prediction completed — ranked locations updated.</div>
+</body>
+</html>
